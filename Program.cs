@@ -55,11 +55,19 @@ do
   else if (choice == "3")
   {
     // Remove Mario Character
-     Console.WriteLine("Enter the Id of the character to remove:");
+    Console.WriteLine("Enter the Id of the character to remove:");
     if (UInt32.TryParse(Console.ReadLine(), out UInt32 Id))
     {
-      logger.Info($"Character Id {Id} entered");
-       Mario? character = marios.First(c => c.Id == Id);
+      Mario? character = marios.FirstOrDefault(c => c.Id == Id);
+      if (character == null)
+      {
+        logger.Error($"Character Id {Id} not found");
+      } else {
+        marios.Remove(character);
+        // serialize list<marioCharacter> into json file
+        File.WriteAllText(marioFileName, JsonSerializer.Serialize(marios));
+        logger.Info($"Character Id {Id} removed");
+      }
     } else {
       logger.Error("Invalid Id");
     }
