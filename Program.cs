@@ -9,7 +9,7 @@ var logger = LogManager.Setup().LoadConfigurationFromFile(path).GetCurrentClassL
 logger.Info("Program started");
 
 // deserialize mario json from file into List<Mario>
-string marioFileName = "mario.json";
+string marioFileName = "json/mario.json";
 List<Mario> marios = new List<Mario>();
 if (File.Exists(marioFileName))
 {
@@ -27,7 +27,7 @@ if (File.Exists(marioFileName))
 }
 
 // deserialize dk json from file into List<DonkeyKong>
-string dkFileName = "dk.json";
+string dkFileName = "json/dk.json";
 List<DonkeyKong> donkyKongs = new List<DonkeyKong>();
 if (File.Exists(dkFileName))
 {
@@ -49,7 +49,7 @@ else
 }
 
 // deserialize street fighter II json from file into List<StreetFighterII>
-string sf2FileName = "sf2.json";
+string sf2FileName = "json/sf2.json";
 List<StreetFighterII> streetFighterIIs = new List<StreetFighterII>();
 if (File.Exists(sf2FileName))
 {
