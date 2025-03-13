@@ -24,6 +24,12 @@ do
   Console.WriteLine("1) Display Mario Characters");
   Console.WriteLine("2) Add Mario Character");
   Console.WriteLine("3) Remove Mario Character");
+  Console.WriteLine("4) Display Donky Kong Characters");
+  Console.WriteLine("5) Add Donky Knong Character");
+  Console.WriteLine("6) Remove Donky Knong Character");
+  Console.WriteLine("7) Display Street Fighter II Characters");
+  Console.WriteLine("8) Add Street Fighter II Character");
+  Console.WriteLine("9) Remove Street Fighter II Character");
   Console.WriteLine("Enter to quit");
 
   // input selection
