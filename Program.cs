@@ -192,11 +192,36 @@ do
         }
     }
     else if (choice == "8")
-    {
-        // Edit Donkey Kong Character
-        
+   {
+        // Edit Street Fighter II Character
+        //find the character by Id
+        Console.WriteLine("Enter the Id of the character to edit:");
+        if (UInt32.TryParse(Console.ReadLine(), out UInt32 Id))
+        {
+            DonkeyKong? DonkeyKong = donkyKongs.FirstOrDefault(c => c.Id == Id);
+            if (DonkeyKong == null)
+            {
+                logger.Error($"Character Id {Id} not found");
+            }
+            else
+            {
+                //display the character
+                Console.WriteLine(DonkeyKong.Display());
+
+                //edit the character
+                InputCharacter(DonkeyKong);
+                //serialize the list back to the file
+                File.WriteAllText(sf2FileName, JsonSerializer.Serialize(streetFighterIIs));
+
                 logger.Error($"edit");
-           
+            }
+        }
+        else
+        {
+            logger.Error("Invalid Id");
+        }
+        
+            
     }
     else if (choice == "9")
     {
