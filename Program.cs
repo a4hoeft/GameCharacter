@@ -76,12 +76,16 @@ do
     Console.WriteLine("1) Display Mario Characters");
     Console.WriteLine("2) Add Mario Character");
     Console.WriteLine("3) Remove Mario Character");
-    Console.WriteLine("4) Display Donkey Kong Characters");
-    Console.WriteLine("5) Add Donkey Kong Character");
-    Console.WriteLine("6) Remove Donkey Kong Character");
-    Console.WriteLine("7) Display Street Fighter II Characters");
-    Console.WriteLine("8) Add Street Fighter II Character");
-    Console.WriteLine("9) Remove Street Fighter II Character");
+    Console.WriteLine("4) Edit Mario Character");
+    Console.WriteLine("5) Display Donkey Kong Characters");
+    Console.WriteLine("6) Add Donkey Kong Character");
+    Console.WriteLine("7) Remove Donkey Kong Character");
+    Console.WriteLine("8) Edit Donkey Kong Character");
+    Console.WriteLine("9) Display Street Fighter II Characters");
+    Console.WriteLine("10) Add Street Fighter II Character");
+    Console.WriteLine("11) Remove Street Fighter II Character");
+    Console.WriteLine("12) Edit Street Fighter II Character");
+
     Console.WriteLine("Enter to quit");
 
     // input selection from user
@@ -119,7 +123,7 @@ do
             Mario? character = marios.FirstOrDefault(c => c.Id == Id);
             if (character == null)
             {
-                logger.Error($"Character Id {Id} not found");
+                logger.Error($"edit");
             }
             else
             {
@@ -136,13 +140,20 @@ do
     }
     else if (choice == "4")
     {
+        // Edit Mario Character
+      
+                logger.Info($"edit");
+         
+    }
+    else if (choice == "5")
+    {
         // Display Donkey Kong Characters
         foreach (var c in donkyKongs)
         {
             Console.WriteLine(c.Display());
         }
     }
-    else if (choice == "5")
+    else if (choice == "6")
     {
         // Add Donkey Kong Character
         // Generate unique Id
@@ -156,7 +167,7 @@ do
         File.WriteAllText(dkFileName, JsonSerializer.Serialize(donkyKongs));
         logger.Info($"Character added: {donkyKong.Name}");
     }
-    else if (choice == "6")
+    else if (choice == "7")
     {
         // Remove Donkey Kong Character
         Console.WriteLine("Enter the Id of the character to remove:");
@@ -180,7 +191,14 @@ do
             logger.Error("Invalid Id");
         }
     }
-    else if (choice == "7")
+    else if (choice == "8")
+    {
+        // Edit Donkey Kong Character
+        
+                logger.Error($"edit");
+           
+    }
+    else if (choice == "9")
     {
         // Display Street Fighter II Characters
         foreach (var c in streetFighterIIs)
@@ -188,7 +206,7 @@ do
             Console.WriteLine(c.Display());
         }
     }
-    else if (choice == "8")
+    else if (choice == "10")
     {
         // Add Street Fighter II Character
         // Generate unique Id
@@ -202,7 +220,7 @@ do
         File.WriteAllText(sf2FileName, JsonSerializer.Serialize(streetFighterIIs));
         logger.Info($"Character added: {streetFighterII.Name}");
     }
-    else if (choice == "9")
+    else if (choice == "11")
     {
         // Remove Street Fighter II Character
         Console.WriteLine("Enter the Id of the character to remove:");
@@ -225,6 +243,13 @@ do
         {
             logger.Error("Invalid Id");
         }
+    }
+    else if (choice == "12")
+    {
+        // Edit Street Fighter II Character
+       
+                logger.Error($"edit");
+            
     }
     else if (string.IsNullOrEmpty(choice))
     {
