@@ -247,8 +247,33 @@ do
     else if (choice == "12")
     {
         // Edit Street Fighter II Character
-       
+        //find the character by Id
+        Console.WriteLine("Enter the Id of the character to edit:");
+        if (UInt32.TryParse(Console.ReadLine(), out UInt32 Id))
+        {
+            StreetFighterII? streetFighterII = streetFighterIIs.FirstOrDefault(c => c.Id == Id);
+            if (streetFighterII == null)
+            {
+                logger.Error($"Character Id {Id} not found");
+            }
+            else
+            {
+                //display the character
+                Console.WriteLine(streetFighterII.Display());
+
+                //edit the character
+                InputCharacter(streetFighterII);
+                //serialize the list back to the file
+                File.WriteAllText(sf2FileName, JsonSerializer.Serialize(streetFighterIIs));
+
                 logger.Error($"edit");
+            }
+        }
+        else
+        {
+            logger.Error("Invalid Id");
+        }
+        
             
     }
     else if (string.IsNullOrEmpty(choice))
