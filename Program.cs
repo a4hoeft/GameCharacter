@@ -139,11 +139,36 @@ do
         }
     }
     else if (choice == "4")
-    {
-        // Edit Mario Character
-      
-                logger.Info($"edit");
-         
+   {
+        // Edit Street Fighter II Character
+        //find the character by Id
+        Console.WriteLine("Enter the Id of the character to edit:");
+        if (UInt32.TryParse(Console.ReadLine(), out UInt32 Id))
+        {
+            Mario ? Mario  = marios.FirstOrDefault(c => c.Id == Id);
+            if (Mario  == null)
+            {
+                logger.Error($"Character Id {Id} not found");
+            }
+            else
+            {
+                //display the character
+                Console.WriteLine(Mario .Display());
+
+                //edit the character
+                InputCharacter(Mario );
+                //serialize the list back to the file
+                File.WriteAllText(marioFileName, JsonSerializer.Serialize(marios));
+
+                logger.Error($"edit");
+            }
+        }
+        else
+        {
+            logger.Error("Invalid Id");
+        }
+        
+            
     }
     else if (choice == "5")
     {
@@ -211,7 +236,7 @@ do
                 //edit the character
                 InputCharacter(DonkeyKong);
                 //serialize the list back to the file
-                File.WriteAllText(sf2FileName, JsonSerializer.Serialize(streetFighterIIs));
+                File.WriteAllText(dkFileName, JsonSerializer.Serialize(donkyKongs));
 
                 logger.Error($"edit");
             }
